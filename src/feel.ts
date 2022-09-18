@@ -69,7 +69,7 @@ export const expressionsLanguage = feelLanguage.configure({ top: 'Expressions' }
 const keywords = 'return satisfies then in'.split(' ').map(kw => ({ label: kw, type: 'keyword' }));
 
 export const dontComplete = [
-  'String', 'Name',
+  'StringLiteral', 'Name',
   'LineComment', 'BlockComment'
 ];
 
