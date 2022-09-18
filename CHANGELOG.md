@@ -6,6 +6,10 @@ All notable changes to [saxen](https://github.com/nikku/lang-feel) are documente
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.0.3
+
+* `FIX`: don't complete in `StringLiteral`
+
 ## 0.0.2
 
 * `FEAT`: unify snippets
