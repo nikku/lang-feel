@@ -3,32 +3,32 @@ import { Completion, snippetCompletion as snip } from '@codemirror/autocomplete'
 // / A collection of FEEL-related
 // / [snippets](#autocomplete.snippet).
 export const snippets: readonly Completion[] = [
-  snip('function(${params})\n\t${body}', {
+  snip('function(${params}) ${body}', {
     label: 'function',
     detail: 'definition',
     type: 'keyword'
   }),
-  snip('for\n\t${a} in ${b}\nreturn\n\t${a}', {
+  snip('for ${var} in ${collection} return ${value}', {
     label: 'for',
     detail: 'expression',
     type: 'keyword'
   }),
-  snip('every\n\t${a} in ${}\nsatisfies\n\t${a}', {
+  snip('every ${var} in ${collection} satisfies ${condition}', {
     label: 'every',
-    detail: 'expression',
+    detail: 'quantified expression',
     type: 'keyword'
   }),
-  snip('some\n\t${a} in ${}\nsatisfies\n\t${a}', {
+  snip('some ${var} in ${collection} satisfies ${condition}', {
     label: 'some',
-    detail: 'expression',
+    detail: 'quantified expression',
     type: 'keyword'
   }),
-  snip('if ${} then ${}', {
+  snip('if ${condition} then ${value}', {
     label: 'if',
     detail: 'block',
     type: 'keyword'
   }),
-  snip('if ${} then ${} else ${}', {
+  snip('if ${condition} then ${value} else ${other value}', {
     label: 'if',
     detail: '/ else block',
     type: 'keyword'
