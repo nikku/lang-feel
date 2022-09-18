@@ -6,6 +6,11 @@ All notable changes to [saxen](https://github.com/nikku/lang-feel) are documente
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.0.2
+
+* `FEAT`: unify snippets
+* `FIX`: don't double-suggest keyword completions
+
 ## 0.0.1
 
 _Initial version._
