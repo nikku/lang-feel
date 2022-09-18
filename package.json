@@ -51,5 +51,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/nikku/lang-feel.git"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
