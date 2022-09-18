@@ -66,7 +66,7 @@ export const unaryTestsLanguage = feelLanguage.configure({ top: 'UnaryTests' });
 // / Language provider for JSX.
 export const expressionsLanguage = feelLanguage.configure({ top: 'Expressions' });
 
-const keywords = 'for return every some satisfies if then in function'.split(' ').map(kw => ({ label: kw, type: 'keyword' }));
+const keywords = 'return satisfies then in'.split(' ').map(kw => ({ label: kw, type: 'keyword' }));
 
 export const dontComplete = [
   'String', 'Name',
