@@ -6,14 +6,14 @@ import { Text } from '@codemirror/state';
 const cache = new NodeWeakMap<readonly Completion[]>();
 
 const ScopeNodes = new Set([
-  'Script', 'Block',
-  'FunctionExpression', 'FunctionDeclaration', 'ArrowFunction', 'MethodDeclaration',
-  'ForStatement'
+  'Expressions',
+  'FunctionDeclaration',
+  'Context'
 ]);
 
 function defID(type: string) {
   return (node: SyntaxNodeRef, def: (node: SyntaxNodeRef, type: string) => void) => {
-    const id = node.node.getChild('VariableDefinition');
+    const id = node.node.getChild('Name');
     if (id) def(id, type);
     return true;
   };
@@ -25,13 +25,8 @@ const gatherCompletions: {
   [node: string]: (node: SyntaxNodeRef, def: (node: SyntaxNodeRef, type: string) => void) => void | boolean
 } = {
   FunctionDeclaration: defID('function'),
-  ClassDeclaration: defID('class'),
-  ClassExpression: () => true,
-  EnumDeclaration: defID('constant'),
-  TypeAliasDeclaration: defID('type'),
-  NamespaceDeclaration: defID('namespace'),
+  Context: defID('context'),
   VariableDefinition(node, def) { if (!node.matchContext(functionContext)) def(node, 'variable'); },
-  TypeDefinition(node, def) { def(node, 'type'); },
   __proto__: null as any
 };
 
@@ -39,11 +34,14 @@ function getScope(doc: Text, node: SyntaxNode) {
   const cached = cache.get(node);
   if (cached) return cached;
 
+  console.log(node);
+
   const completions: Completion[] = [], top = true;
   function def(node: SyntaxNodeRef, type: string) {
     const name = doc.sliceString(node.from, node.to);
     completions.push({ label: name, type });
   }
+
   node.cursor(IterMode.IncludeAnonymous).iterate(node => {
     if (top) {
       top = false;
@@ -64,17 +62,18 @@ function getScope(doc: Text, node: SyntaxNode) {
 const Identifier = /^[\w$\xa1-\uffff][\w$\d\xa1-\uffff]*$/;
 
 export const dontComplete = [
-  'TemplateString', 'String', 'RegExp',
+  'StringLiteral',
   'LineComment', 'BlockComment',
-  'VariableDefinition', 'TypeDefinition', 'Label',
-  'PropertyDefinition', 'PropertyName',
-  'PrivatePropertyDefinition', 'PrivatePropertyName'
+  'VariableName'
 ];
 
 // / Completion source that looks up locally defined names in
 // / JavaScript code.
 export function localCompletionSource(context: CompletionContext): CompletionResult | null {
   const inner = syntaxTree(context.state).resolveInner(context.pos, -1);
+
+  console.log(inner);
+
   if (dontComplete.indexOf(inner.name) > -1) return null;
   const isWord = inner.to - inner.from < 20 && Identifier.test(context.state.sliceDoc(inner.from, inner.to));
   if (!isWord && !context.explicit) return null;
