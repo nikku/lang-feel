@@ -23,14 +23,9 @@ export const snippets: readonly Completion[] = [
     detail: 'quantified expression',
     type: 'keyword'
   }),
-  snip('if ${condition} then ${value}', {
-    label: 'if',
-    detail: 'block',
-    type: 'keyword'
-  }),
   snip('if ${condition} then ${value} else ${other value}', {
     label: 'if',
-    detail: '/ else block',
+    detail: 'block',
     type: 'keyword'
   })
 ];
