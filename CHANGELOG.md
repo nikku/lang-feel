@@ -6,6 +6,10 @@ All notable changes to [saxen](https://github.com/nikku/lang-feel) are documente
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.3.1
+
+* `FIX`: remove wrong `if` snippet
+
 ## 0.3.0
 
 * `DEPS`: bump to `lezer-feel@0.17.0`
