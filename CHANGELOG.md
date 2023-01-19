@@ -6,6 +6,11 @@ All notable changes to [saxen](https://github.com/nikku/lang-feel) are documente
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.3.0
+
+* `DEPS`: bump to `lezer-feel@0.17.0`
+* `DEPS`: update `codemirror`
+
 ## 0.2.0
 
 * `DEPS`: bump to `lezer-feel@0.16.0`
