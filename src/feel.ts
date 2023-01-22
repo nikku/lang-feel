@@ -22,8 +22,8 @@ export const feelLanguage = LRLanguage.define({
         'List FilterExpression': delimitedIndent({
           closing: ']'
         }),
-        'ParenthesizedExpression FunctionInvocation': delimitedIndent({
-          closing: ')'
+        'ParenthesizedExpression FunctionInvocation': continuedIndent({
+          except: /^\s*\)/
         }),
         'ForExpression QuantifiedExpression IfExpression': continuedIndent({
           except: /^\s*(then|else|return|satisfies)\b/

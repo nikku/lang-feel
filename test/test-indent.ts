@@ -8,7 +8,7 @@ function check(code: string, options: any = {}) {
     code = /^\n*([^]*)/.exec(code)![1];
     const state = EditorState.create({ doc: code, extensions: [ feel(options).language ] });
 
-    console.log(state.doc.text.join('\n'));
+    console.log(state.doc.text.join('\n').replace(/ /g, '·'));
 
     for (let pos = 0, lines = code.split('\n'), i = 0; i < lines.length; i++) {
       const line = lines[i], indent = /^\s*/.exec(line)![0].length;
@@ -46,17 +46,17 @@ describe('feel indentation', () => {
 
   it('indents nested calls', check(`
 one(
-   two(
-      three(
-           four()
-      )
-   )
+  two(
+    three(
+      four()
+    )
+  )
 )`));
 
 
   it('indents unfinished nodes', check(`
 if (foo &&
-    `));
+  `));
 
 
   it('deindents then/else', check(`
@@ -79,16 +79,16 @@ else
 
   it('indents function args (named)', check(`
 foo(
-   a: 10,
-   b: 100
+  a: 10,
+  b: 100
 )
 `));
 
 
   it('indents function args (positional)', check(`
 foo(
-   10,
-   100
+  10,
+  100
 )
 `));
 
