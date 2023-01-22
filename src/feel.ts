@@ -35,6 +35,7 @@ export const feelLanguage = LRLanguage.define({
       foldNodeProp.add({
         Context: foldInside,
         List: foldInside,
+        ParenthesizedExpression: foldInside,
         FunctionDefinition(node) {
           const last = node.getChild(')');
 
