@@ -6,6 +6,10 @@ All notable changes to [saxen](https://github.com/nikku/lang-feel) are documente
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.3.2
+
+* `FIX`: continue indent in parenthesis and function invocation
+
 ## 0.3.1
 
 * `FIX`: remove wrong `if` snippet
