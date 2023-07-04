@@ -16,7 +16,7 @@ describe('javascript syntax queries', () => {
   it('returns a tree', () => {
     const state = s('1 + 322'), tree = tr(state);
     ist(tree instanceof Tree);
-    ist(tree.type.name, 'Expressions');
+    ist(tree.type.name, 'Expression');
     ist(tree.length, state.doc.length);
     const def = tree.resolve(5);
     ist(def.name, 'NumericLiteral');
@@ -34,7 +34,7 @@ describe('javascript syntax queries', () => {
 
 
   it('reuses nodes when parsing big documents', () => {
-    let state = s('"hello"\n" + "blah"\n'.repeat(1000));
+    let state = s('"hello"\n + "blah"\n +'.repeat(1000).replace(/[+]$/, ''));
     const buf = (tr(state).resolve(2) as any).buffer;
     state = state.update({ changes: { from: 600, to: 620, insert: 'xyz' } }).state;
     ist((tr(state).resolve(2) as any).buffer, buf);

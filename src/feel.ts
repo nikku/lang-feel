@@ -65,7 +65,7 @@ export const feelLanguage = LRLanguage.define({
 export const unaryTestsLanguage = feelLanguage.configure({ top: 'UnaryTests' });
 
 // / Language provider for JSX.
-export const expressionsLanguage = feelLanguage.configure({ top: 'Expressions' });
+export const expressionLanguage = feelLanguage.configure({ top: 'Expression' });
 
 const keywords = 'return satisfies then in'.split(' ').map(kw => ({ label: kw, type: 'keyword' }));
 
@@ -77,10 +77,10 @@ export const dontComplete = [
 // / FEEL support. Includes [snippet](#lang-feel.snippets)
 // / completion.
 export function feel(config: {
-  dialect?: 'expressions' | 'unaryTests',
+  dialect?: 'expression' | 'unaryTests',
   context?: Record<string, any>
 } = {}) {
-  const lang = config.dialect === 'unaryTests' ? unaryTestsLanguage : expressionsLanguage;
+  const lang = config.dialect === 'unaryTests' ? unaryTestsLanguage : expressionLanguage;
 
   const contextualLang = lang.configure({
     contextTracker: trackVariables(config.context)
