@@ -1,6 +1,6 @@
 {
   "name": "lang-feel",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "FEEL language support for the CodeMirror code editor",
   "scripts": {
     "all": "run-s lint build test",
