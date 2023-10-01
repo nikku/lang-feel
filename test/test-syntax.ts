@@ -35,8 +35,12 @@ describe('javascript syntax queries', () => {
 
   it('reuses nodes when parsing big documents', () => {
     let state = s('"hello"\n + "blah"\n +'.repeat(1000).replace(/[+]$/, ''));
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const buf = (tr(state).resolve(2) as any).buffer;
     state = state.update({ changes: { from: 600, to: 620, insert: 'xyz' } }).state;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ist((tr(state).resolve(2) as any).buffer, buf);
   });
 

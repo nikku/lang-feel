@@ -78,6 +78,8 @@ export const dontComplete = [
 // / completion.
 export function feel(config: {
   dialect?: 'expression' | 'unaryTests',
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   context?: Record<string, any>
 } = {}) {
   const lang = config.dialect === 'unaryTests' ? unaryTestsLanguage : expressionLanguage;
