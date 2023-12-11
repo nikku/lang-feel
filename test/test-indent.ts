@@ -3,7 +3,6 @@ import { EditorState } from '@codemirror/state';
 import { getIndentation } from '@codemirror/language';
 import { feel } from 'lang-feel';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function check(code: string, options: any = {}) {
   return () => {
     code = /^\n*([^]*)/.exec(code)![1];
