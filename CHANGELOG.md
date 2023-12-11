@@ -6,6 +6,12 @@ All notable changes to [saxen](https://github.com/nikku/lang-feel) are documente
 
 ___Note:__ Yet to be released changes appear here._
 
+## 2.0.0
+
+* `FEAT`: make keyword completions contextual
+* `FEAT`: allow to override completions
+* `FEAT`: expose many onboard utilities for easier customizing
+
 ## 1.1.0
 
 * `DEPS`: update to `lezer-feel@1.2.0`
