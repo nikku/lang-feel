@@ -9,3 +9,8 @@ This package implements the [DMN](https://www.omg.org/spec/DMN/) FEEL language s
 
 * [lezer-feel](https://github.com/nikku/lezer-feel) - FEEL grammar
 * [feelin](https://github.com/nikku/feelin) - FEEL parser + interpreter
+
+
+## License
+
+MIT
