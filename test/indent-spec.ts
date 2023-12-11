@@ -1,18 +1,15 @@
-import ist from 'ist';
 import { EditorState } from '@codemirror/state';
 import { getIndentation } from '@codemirror/language';
-import { feel } from 'lang-feel';
+import { feel } from '..';
 
 function check(code: string, options: any = {}) {
   return () => {
     code = /^\n*([^]*)/.exec(code)![1];
     const state = EditorState.create({ doc: code, extensions: [ feel(options).language ] });
 
-    console.log(state.doc.text.join('\n').replace(/ /g, '·'));
-
     for (let pos = 0, lines = code.split('\n'), i = 0; i < lines.length; i++) {
       const line = lines[i], indent = /^\s*/.exec(line)![0].length;
-      ist(`${getIndentation(state, pos)} (${i + 1})`, `${indent} (${i + 1})`);
+      expect(`${getIndentation(state, pos)} (${i + 1})`).to.eql(`${indent} (${i + 1})`);
       pos += line.length + 1;
     }
   };
@@ -32,6 +29,7 @@ describe('feel indentation', () => {
   }
 }
 `));
+
 
   it('indents parenthesis', check(`
 (

@@ -1,6 +1,5 @@
-import ist from 'ist';
 import { EditorState } from '@codemirror/state';
-import { feelLanguage } from 'lang-feel';
+import { feelLanguage } from '..';
 import { ensureSyntaxTree } from '@codemirror/language';
 import { Tree } from '@lezer/common';
 
@@ -13,23 +12,26 @@ function tr(state: EditorState) {
 }
 
 describe('javascript syntax queries', () => {
+
   it('returns a tree', () => {
     const state = s('1 + 322'), tree = tr(state);
-    ist(tree instanceof Tree);
-    ist(tree.type.name, 'Expression');
-    ist(tree.length, state.doc.length);
+
+    expect(tree instanceof Tree).to.be.true;
+    expect(tree.type.name).to.eql('Expression');
+    expect(tree.length).to.eql(state.doc.length);
+
     const def = tree.resolve(5);
-    ist(def.name, 'NumericLiteral');
-    ist(def.from, 4);
-    ist(def.to, 7);
+    expect(def.name).to.eql('NumericLiteral');
+    expect(def.from).to.eql(4);
+    expect(def.to).to.eql(7);
   });
 
 
   it('keeps the tree up to date through changes', () => {
     let state = s('if (2)\n  x');
-    ist(tr(state).topNode.childAfter(0)!.name, 'IfExpression');
+    expect(tr(state).topNode.childAfter(0)!.name).to.eql('IfExpression');
     state = state.update({ changes: { from: 0, to: 3, insert: 'fac' } }).state;
-    ist(tr(state).topNode.childAfter(0)!.name, 'FunctionInvocation');
+    expect(tr(state).topNode.childAfter(0)!.name).to.eql('FunctionInvocation');
   });
 
 
@@ -39,7 +41,7 @@ describe('javascript syntax queries', () => {
     const buf = (tr(state).resolve(2) as any).buffer;
     state = state.update({ changes: { from: 600, to: 620, insert: 'xyz' } }).state;
 
-    ist((tr(state).resolve(2) as any).buffer, buf);
+    expect((tr(state).resolve(2) as any).buffer).to.eql(buf);
   });
 
 });

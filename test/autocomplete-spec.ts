@@ -1,5 +1,5 @@
 import { EditorSelection, EditorState } from '@codemirror/state';
-import { feel } from '../dist/index.js';
+import { feel } from '..';
 import { autocompletion, currentCompletions, startCompletion } from '@codemirror/autocomplete';
 import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';
@@ -8,9 +8,7 @@ import { basicSetup } from 'codemirror';
 function check(options: {
   doc: string,
   selection?: number | [ number, number ],
-  expectedCompletions: [
-    { label: string, excluded?: boolean }
-  ]
+  expectedCompletions: { label: string, excluded?: boolean }[]
 }) {
 
   return async () => {
@@ -62,13 +60,15 @@ function check(options: {
       } = expectedCompletion;
 
       if (!excluded) {
-        if (!completions.some(c => c.label === label)) {
-          throw new Error(`expected <${label}> completion`);
-        }
+        expect(
+          completions.some(c => c.label === label),
+          `expected <${label}> completion`
+        ).to.be.true;
       } else {
-        if (!completions.every(c => c.label !== label)) {
-          throw new Error(`expected NO <${label}> completion`);
-        }
+        expect(
+          completions.every(c => c.label !== label),
+          `expected NO <${label}> completion`
+        ).to.be.true;
       }
     }
 
@@ -76,7 +76,7 @@ function check(options: {
   };
 }
 
-function wait(ms) {
+function wait(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
