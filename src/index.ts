@@ -8,3 +8,5 @@ export {
 export {
   snippets
 } from './snippets';
+
+export * from './completion';

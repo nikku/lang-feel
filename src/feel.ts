@@ -3,15 +3,35 @@ import {
   trackVariables
 } from 'lezer-feel';
 
-import { LRLanguage, LanguageSupport,
-  delimitedIndent, continuedIndent, indentNodeProp,
-  foldNodeProp, foldInside } from '@codemirror/language';
-import { completeFromList, ifNotIn } from '@codemirror/autocomplete';
-import { snippets } from './snippets';
+import {
+  LRLanguage,
+  LanguageSupport,
+  delimitedIndent,
+  continuedIndent,
+  indentNodeProp,
+  foldNodeProp,
+  foldInside
+} from '@codemirror/language';
 
-// / A language provider based on the [Lezer FEEL
-// / parser](https://github.com/nikku/lezer-feel), extended with
-// / highlighting and indentation information.
+import {
+  snippets
+} from './snippets';
+
+import {
+  keywordCompletions,
+  snippetCompletion
+} from './completion';
+
+import {
+  CompletionSource
+} from '@codemirror/autocomplete';
+
+
+/**
+ * A FEEL language provider based on the
+ * [Lezer FEEL parser](https://github.com/nikku/lezer-feel),
+ * extended with highlighting and indentation information.
+ */
 export const feelLanguage = LRLanguage.define({
   parser: parser.configure({
     props: [
@@ -61,25 +81,25 @@ export const feelLanguage = LRLanguage.define({
   }
 });
 
-// / A language provider for TypeScript.
+/**
+ * A language provider for FEEL Unary Tests
+ */
 export const unaryTestsLanguage = feelLanguage.configure({ top: 'UnaryTests' });
 
-// / Language provider for JSX.
+/**
+ * Language provider for FEEL Expression
+ */
 export const expressionLanguage = feelLanguage.configure({ top: 'Expression' });
 
-const keywords = 'return satisfies then in'.split(' ').map(kw => ({ label: kw, type: 'keyword' }));
 
-export const dontComplete = [
-  'StringLiteral', 'Name',
-  'LineComment', 'BlockComment'
-];
 
-// / FEEL support. Includes [snippet](#lang-feel.snippets)
-// / completion.
+/**
+ * Feel language support for CodeMirror.
+ *
+ * Includes [snippet](#lang-feel.snippets)
+ */
 export function feel(config: {
   dialect?: 'expression' | 'unaryTests',
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   context?: Record<string, any>
 } = {}) {
   const lang = config.dialect === 'unaryTests' ? unaryTestsLanguage : expressionLanguage;
@@ -88,9 +108,17 @@ export function feel(config: {
     contextTracker: trackVariables(config.context)
   });
 
+  const completions = [
+    snippetCompletion(snippets),
+    keywordCompletions,
+  ].flat();
+
   return new LanguageSupport(contextualLang, [
-    feelLanguage.data.of({
-      autocomplete: ifNotIn(dontComplete, completeFromList(snippets.concat(keywords)))
-    })
+    ...(
+      completions.map(autocomplete => feelLanguage.data.of({
+        autocomplete
+      }))
+    )
   ]);
+
 }
