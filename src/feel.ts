@@ -100,6 +100,7 @@ export const expressionLanguage = feelLanguage.configure({ top: 'Expression' });
  */
 export function feel(config: {
   dialect?: 'expression' | 'unaryTests',
+  completions?: CompletionSource[],
   context?: Record<string, any>
 } = {}) {
   const lang = config.dialect === 'unaryTests' ? unaryTestsLanguage : expressionLanguage;
@@ -108,7 +109,7 @@ export function feel(config: {
     contextTracker: trackVariables(config.context)
   });
 
-  const completions = [
+  const completions = config.completions || [
     snippetCompletion(snippets),
     keywordCompletions,
   ].flat();
