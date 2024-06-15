@@ -16,7 +16,7 @@ function check(code: string, options: any = {}) {
 }
 
 
-describe('feel indentation', () => {
+describe('indent', () => {
 
   it('indents context', check(`
 {

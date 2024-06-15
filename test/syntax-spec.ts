@@ -11,7 +11,8 @@ function tr(state: EditorState) {
   return ensureSyntaxTree(state, state.doc.length, 1e9)!;
 }
 
-describe('javascript syntax queries', () => {
+
+describe('syntax', () => {
 
   it('returns a tree', () => {
     const state = s('1 + 322'), tree = tr(state);
