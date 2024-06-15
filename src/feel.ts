@@ -120,7 +120,7 @@ export function feel(config: {
 
   return new LanguageSupport(contextualLang, [
     ...(
-      completions.map(autocomplete => feelLanguage.data.of({
+      completions.map(autocomplete => contextualLang.data.of({
         autocomplete
       }))
     )
