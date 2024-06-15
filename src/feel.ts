@@ -84,12 +84,16 @@ export const feelLanguage = LRLanguage.define({
 /**
  * A language provider for FEEL Unary Tests
  */
-export const unaryTestsLanguage = feelLanguage.configure({ top: 'UnaryTests' });
+export const unaryTestsLanguage = feelLanguage.configure({
+  top: 'UnaryTests',
+}, 'FEEL unary tests');
 
 /**
  * Language provider for FEEL Expression
  */
-export const expressionLanguage = feelLanguage.configure({ top: 'Expression' });
+export const expressionLanguage = feelLanguage.configure({
+  top: 'Expression'
+}, 'FEEL expression');
 
 
 
