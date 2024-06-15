@@ -6,6 +6,13 @@ All notable changes to [saxen](https://github.com/nikku/lang-feel) are documente
 
 ___Note:__ Yet to be released changes appear here._
 
+## 2.1.0
+
+* `FEAT`: attach language `name` ([`51dff22`](https://github.com/nikku/lang-feel/commit/51dff227b142f2a34283c919bb3636a1d484bb85))
+* `CHORE`: use contextual language to bind autocompletion tokens ([`9a759a0`](https://github.com/nikku/lang-feel/commit/9a759a0d4d6bb12e341884a3c2e8a81b6bff8d71))
+* `DEPS`: update `codemirror*` deps
+* `DEPS`: update to `lezer-feel@1.2.9`
+
 ## 2.0.0
 
 * `FEAT`: make keyword completions contextual
