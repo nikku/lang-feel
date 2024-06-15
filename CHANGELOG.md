@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to [saxen](https://github.com/nikku/lang-feel) are documented here. We use [semantic versioning](http://semver.org/) for releases.
+All notable changes to [lang-feel](https://github.com/nikku/lang-feel) are documented here. We use [semantic versioning](http://semver.org/) for releases.
 
 ## Unreleased
 
