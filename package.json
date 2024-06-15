@@ -46,7 +46,7 @@
     "@typescript-eslint/parser": "^7.13.0",
     "chai": "^4.4.1",
     "codemirror": "^6.0.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "eslint-plugin-bpmn-io": "^1.0.0",
     "karma": "^6.4.3",
     "karma-chai": "^0.1.0",
