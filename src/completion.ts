@@ -57,7 +57,8 @@ export const keywordCompletions = [
 
 export const dontComplete = [
   'StringLiteral', 'Identifier',
-  'LineComment', 'BlockComment'
+  'LineComment', 'BlockComment',
+  'PathExpression'
 ];
 
 export function snippetCompletion(snippets: readonly Completion[]) : CompletionSource {

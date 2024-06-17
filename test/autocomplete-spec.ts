@@ -61,6 +61,56 @@ describe('feel completion', () => {
       ]
     }));
 
+
+    it('completes snippet inside <expression>', check({
+      doc: '{ a: }',
+      selection: 5,
+      expectedCompletions: [
+        { label: 'if' },
+        { label: 'context' }
+      ]
+    }));
+
+
+    it('completes snippet inside (nested) <expression>', check({
+      doc: 'a.b({ a: })',
+      selection: 9,
+      expectedCompletions: [
+        { label: 'if' },
+        { label: 'context' }
+      ]
+    }));
+
+
+    it('does not complete snippet inside <pathExpression>', check({
+      doc: '{ a: 1 }.',
+      selection: 8,
+      expectedCompletions: [
+        { label: 'if', excluded: true },
+        { label: 'context', excluded: true }
+      ]
+    }));
+
+
+    it.skip('does not complete snippet <context> key', check({
+      doc: '{  }',
+      selection: 2,
+      expectedCompletions: [
+        { label: 'if', excluded: true },
+        { label: 'context', excluded: true }
+      ]
+    }));
+
+
+    it.skip('does not complete snippet inside <function> named parameter', check({
+      doc: 'fn(: 100)',
+      selection: 3,
+      expectedCompletions: [
+        { label: 'if', excluded: true },
+        { label: 'context', excluded: true }
+      ]
+    }));
+
   });
 
 
