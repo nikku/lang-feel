@@ -6,6 +6,10 @@ All notable changes to [lang-feel](https://github.com/nikku/lang-feel) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 2.1.1
+
+* `FIX`: do not complete snippets inside `PathExpression`
+
 ## 2.1.0
 
 * `FEAT`: attach language `name` ([`51dff22`](https://github.com/nikku/lang-feel/commit/51dff227b142f2a34283c919bb3636a1d484bb85))
