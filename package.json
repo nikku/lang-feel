@@ -57,7 +57,7 @@
     "microbundle": "^0.15.1",
     "mocha": "^10.4.0",
     "npm-run-all2": "^6.2.0",
-    "puppeteer": "^22.11.0",
+    "puppeteer": "^23.0.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
     "webpack": "^5.92.0"
