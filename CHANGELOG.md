@@ -6,6 +6,11 @@ All notable changes to [lang-feel](https://github.com/nikku/lang-feel) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 2.2.0
+
+* `FEAT`: allow to specify `parserDialect` ([#13](https://github.com/nikku/lang-feel/issues/13))
+* `DEPS`: update to `lezer-feel@1.3.0`
+
 ## 2.1.1
 
 * `FIX`: do not complete snippets inside `PathExpression`
