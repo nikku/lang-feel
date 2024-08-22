@@ -104,13 +104,18 @@ export const expressionLanguage = feelLanguage.configure({
  */
 export function feel(config: {
   dialect?: 'expression' | 'unaryTests',
+  parserDialect?: string,
   completions?: CompletionSource[],
   context?: Record<string, any>
 } = {}) {
-  const lang = config.dialect === 'unaryTests' ? unaryTestsLanguage : expressionLanguage;
+  const language = config.dialect === 'unaryTests' ? unaryTestsLanguage : expressionLanguage;
 
-  const contextualLang = lang.configure({
-    contextTracker: trackVariables(config.context)
+  const dialect = config.parserDialect;
+  const contextTracker = trackVariables(config.context);
+
+  const contextualLang = language.configure({
+    contextTracker,
+    dialect
   });
 
   const completions = config.completions || [

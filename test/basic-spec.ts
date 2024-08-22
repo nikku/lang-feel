@@ -2,6 +2,7 @@ import { Compartment, EditorState, Facet } from '@codemirror/state';
 import { feel } from '..';
 import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';
+import { syntaxTree } from '@codemirror/language';
 
 type Dialect = 'expression' | 'unaryTests';
 
@@ -19,7 +20,7 @@ describe('basic', () => {
   });
 
 
-  it('configure editor', () => {
+  it('should configure editor', () => {
     const doc = `for
   fruit in [ "apple", "bananas" ], vegetable in vegetables
 return
@@ -69,6 +70,32 @@ return
     parent.appendChild(toggleDialectButton);
 
     view.focus();
+  });
+
+
+  it('should configure parser dialect', () => {
+
+    // given
+    const doc = 'a.`b + c`';
+
+    const state = EditorState.create({
+      doc,
+      extensions: [
+        basicSetup,
+        feel({
+          dialect: 'expression',
+          parserDialect: 'camunda'
+        })
+      ]
+    });
+
+    // when
+    const tree = syntaxTree(state);
+
+    const node = tree.resolve(4);
+
+    // then
+    expect(node.name).to.eql('BacktickIdentifier');
   });
 
 });
