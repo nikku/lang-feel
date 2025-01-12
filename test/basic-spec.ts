@@ -6,6 +6,14 @@ import { syntaxTree } from '@codemirror/language';
 
 type Dialect = 'expression' | 'unaryTests';
 
+type EnvWindow = {
+  __env__?: {
+    SINGLE_START?: string
+  }
+};
+
+const singleStart = (window as EnvWindow).__env__?.SINGLE_START === '1';
+
 
 describe('basic', () => {
 
@@ -20,7 +28,7 @@ describe('basic', () => {
   });
 
 
-  it('should configure editor', () => {
+  (singleStart ? it.only : it)('should configure editor', () => {
     const doc = `for
   fruit in [ "apple", "bananas" ], vegetable in vegetables
 return

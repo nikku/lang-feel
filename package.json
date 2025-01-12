@@ -5,6 +5,7 @@
   "scripts": {
     "all": "run-s lint build test",
     "test": "karma start karma.conf.cjs",
+    "start": "SINGLE_START=1 npm run dev",
     "dev": "run-p 'build -- watch' 'test -- --no-single-run --auto-watch'",
     "lint": "eslint . --ext ts",
     "build": "microbundle -f modern,cjs --target node",
@@ -52,6 +53,7 @@
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^3.2.0",
     "karma-debug-launcher": "^0.0.5",
+    "karma-env-preprocessor": "^0.1.1",
     "karma-mocha": "^2.0.1",
     "karma-webpack": "^5.0.1",
     "microbundle": "^0.15.1",
