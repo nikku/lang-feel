@@ -6,6 +6,12 @@ All notable changes to [lang-feel](https://github.com/nikku/lang-feel) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 2.3.0
+
+* `FEAT`: complete `null`, `false`, and `true` tokens
+* `FEAT`: improve completion in various cases
+* `DEPS`: update to `lezer-feel@1.7.0`
+
 ## 2.2.0
 
 * `FEAT`: allow to specify `parserDialect` ([#13](https://github.com/nikku/lang-feel/issues/13))
