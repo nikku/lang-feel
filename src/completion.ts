@@ -5,7 +5,7 @@ import {
   CompletionSource,
   Completion,
   completeFromList,
-  ifNotIn
+  CompletionContext
 } from '@codemirror/autocomplete';
 
 
@@ -58,12 +58,41 @@ export const keywordCompletions = [
 export const dontComplete = [
   'StringLiteral', 'Identifier',
   'LineComment', 'BlockComment',
-  'PathExpression'
+  'PathExpression', 'Context',
+  'Key', 'ParameterName'
 ];
 
+export const doComplete = [
+  'Expr',
+  'ContextEntry'
+];
+
+export function ifExpression(completionSource: CompletionSource) : CompletionSource {
+
+  const allNodes = [ ...dontComplete, ...doComplete ];
+
+  return (context: CompletionContext) => {
+
+    const { state, pos } = context;
+
+    const match = matchUp(syntaxTree(state).resolveInner(pos, -1), allNodes);
+
+    if (match) {
+
+      const [ _, name ] = match;
+
+      if (dontComplete.includes(name)) {
+        return null;
+      }
+    }
+
+    return completionSource(context);
+  };
+}
+
 export function snippetCompletion(snippets: readonly Completion[]) : CompletionSource {
-  return ifNotIn(
-    dontComplete, completeFromList(snippets.map(s => ({ ...s, type: 'text' })))
+  return ifExpression(
+    completeFromList(snippets.map(s => ({ ...s, type: 'text' })))
   );
 }
 
@@ -96,18 +125,23 @@ export function matchChildren(node: SyntaxNode, position: number, nodes: (string
   return null;
 }
 
-function matchUp(node: SyntaxNode, nodeNames: string | undefined | (string | undefined)[]) {
+function matchUp(node: SyntaxNode, nodeNames: string | string[]) : [ SyntaxNode, string ] | null {
 
   if (!Array.isArray(nodeNames)) {
     nodeNames = [ nodeNames ];
   }
 
   for (; node; node = node.parent!) {
-    if (nodeNames.includes(node.name)) {
-      return node;
+
+    const nodeType = node.type;
+
+    const matchedName = nodeNames.find(name => name && nodeType.is(name));
+
+    if (matchedName) {
+      return [ node, matchedName ];
     }
 
-    if (node.type.isTop) {
+    if (nodeType.isTop) {
       break;
     }
   }
@@ -133,11 +167,13 @@ export function ifInside(options: {
 
     const { state, pos } = context;
 
-    const node = matchUp(syntaxTree(state).resolveInner(pos, -1), nodes);
+    const match = matchUp(syntaxTree(state).resolveInner(pos, -1), nodes);
 
-    if (!node) {
+    if (!match) {
       return null;
     }
+
+    const [ node ] = match;
 
     if (matchLeft(node, pos, [ keyword, before ])) {
       return null;

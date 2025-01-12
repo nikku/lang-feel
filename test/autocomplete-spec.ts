@@ -75,6 +75,45 @@ describe('feel completion', () => {
     }));
 
 
+    it('completes snippet inside <comparison>', check({
+      doc: 'a > ',
+      selection: 4,
+      expectedCompletions: [
+        { label: 'if' },
+        { label: 'context' }
+      ]
+    }));
+
+
+    it('completes snippet inside <in expression> value', check({
+      doc: 'for c in  return',
+      selection: 9,
+      expectedCompletions: [
+        { label: 'if' },
+        { label: 'context' }
+      ]
+    }));
+
+
+    it('does not complete snippet inside <in expression> key', check({
+      doc: 'for c in b return',
+      selection: 5,
+      expectedCompletions: [
+        { label: 'context', excluded: true }
+      ]
+    }));
+
+
+    it('completes snippet inside <quantified expression>', check({
+      doc: 'for x in ',
+      selection: 4,
+      expectedCompletions: [
+        { label: 'if' },
+        { label: 'context' }
+      ]
+    }));
+
+
     it('completes snippet inside (nested) <expression>', check({
       doc: 'a.b({ a: })',
       selection: 9,
@@ -95,7 +134,7 @@ describe('feel completion', () => {
     }));
 
 
-    it.skip('does not complete snippet <context> key', check({
+    it('does not complete inside <context>', check({
       doc: '{  }',
       selection: 2,
       expectedCompletions: [
@@ -105,9 +144,9 @@ describe('feel completion', () => {
     }));
 
 
-    it.skip('does not complete snippet inside <function> named parameter', check({
-      doc: 'fn(: 100)',
-      selection: 3,
+    it('does not complete snippet inside <function> named parameter', check({
+      doc: 'fn(a: 100)',
+      selection: 4,
       expectedCompletions: [
         { label: 'if', excluded: true },
         { label: 'context', excluded: true }
