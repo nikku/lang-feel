@@ -36,7 +36,7 @@
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.28.1",
     "@lezer/common": "^1.2.1",
-    "lezer-feel": "^1.6.0"
+    "lezer-feel": "^1.7.0"
   },
   "devDependencies": {
     "@lezer/lr": "^1.4.2",
