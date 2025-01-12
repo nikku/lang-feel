@@ -17,7 +17,10 @@ describe('feel completion', () => {
         { label: 'for' },
         { label: 'if' },
         { label: 'some' },
-        { label: 'every' }
+        { label: 'every' },
+        { label: 'null' },
+        { label: 'true' },
+        { label: 'false' }
       ]
     }));
 

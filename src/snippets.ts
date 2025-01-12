@@ -33,5 +33,20 @@ export const snippets: readonly Completion[] = [
     label: 'context',
     detail: 'block',
     type: 'keyword'
+  }),
+  snippetCompletion('null', {
+    label: 'null',
+    detail: 'literal',
+    type: 'keyword'
+  }),
+  snippetCompletion('true', {
+    label: 'true',
+    detail: 'literal',
+    type: 'keyword'
+  }),
+  snippetCompletion('false', {
+    label: 'false',
+    detail: 'literal',
+    type: 'keyword'
   })
 ];
