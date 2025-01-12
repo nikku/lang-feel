@@ -235,7 +235,7 @@ function check(options: {
 
 function customCompletion(label: string): CompletionSource {
 
-  return (context) => {
+  return (_context) => {
 
     return {
       from: 0,
