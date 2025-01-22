@@ -57,6 +57,7 @@
     "karma-mocha": "^2.0.1",
     "karma-webpack": "^5.0.1",
     "microbundle": "^0.15.1",
+    "min-dom": "^5.1.1",
     "mocha": "^10.8.2",
     "npm-run-all2": "^7.0.2",
     "puppeteer": "^23.11.1",
