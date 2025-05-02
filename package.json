@@ -59,7 +59,7 @@
     "microbundle": "^0.15.1",
     "min-dom": "^5.1.1",
     "mocha": "^10.8.2",
-    "npm-run-all2": "^7.0.2",
+    "npm-run-all2": "^8.0.0",
     "puppeteer": "^23.11.1",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
