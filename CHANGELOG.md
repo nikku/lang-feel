@@ -6,6 +6,11 @@ All notable changes to [lang-feel](https://github.com/nikku/lang-feel) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 2.3.1
+
+* `FIX`: require closing `"` on string literals
+* `DEPS`: update to `lezer-feel@1.7.1`
+
 ## 2.3.0
 
 * `FEAT`: complete `null`, `false`, and `true` tokens
