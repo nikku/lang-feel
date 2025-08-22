@@ -2,9 +2,22 @@
 
 All notable changes to [@bpmn-io/lang-feel](https://github.com/bpmn-io/lang-feel) are documented here. We use [semantic versioning](http://semver.org/) for releases.
 
+Note: Versions prior to `2.4.0` were released in [nikku/lang-feel](https://github.com/nikku/lang-feel)
+
 ## Unreleased
 
 ___Note:__ Yet to be released changes appear here._
+
+## 2.4.0
+
+_Initial release of the fork as `@bpmn-io/lang-feel`_
+
+* `FEAT`: support multi-line strings in camunda dialect
+* `DEPS` update to `@bpmn-io/lezer-feel@1.9.0` (switch to fork from `lezer-feel`)
+
+---
+
+Note: Versions prior to `2.4.0` were released in [nikku/lang-feel](https://github.com/nikku/lang-feel)
 
 ## 2.3.1
 
