@@ -6,6 +6,9 @@ All notable changes to [lang-feel](https://github.com/nikku/lang-feel) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+* `DEPS`: update to `@codemirror/autocomplete@6.19.0`
+* `DEPS`: update to `@codemirror/language@6.11.3`
+
 ## 2.3.1
 
 * `FIX`: require closing `"` on string literals
