@@ -12,9 +12,9 @@ function tr(state: EditorState) {
 }
 
 
-describe('syntax', () => {
+describe('syntax', function() {
 
-  it('returns a tree', () => {
+  it('returns a tree', function() {
     const state = s('1 + 322'), tree = tr(state);
 
     expect(tree instanceof Tree).to.be.true;
@@ -28,7 +28,7 @@ describe('syntax', () => {
   });
 
 
-  it('keeps the tree up to date through changes', () => {
+  it('keeps the tree up to date through changes', function() {
     let state = s('if (2)\n  x');
     expect(tr(state).topNode.childAfter(0)!.name).to.eql('IfExpression');
     state = state.update({ changes: { from: 0, to: 3, insert: 'fac' } }).state;
@@ -36,7 +36,7 @@ describe('syntax', () => {
   });
 
 
-  it('reuses nodes when parsing big documents', () => {
+  it('reuses nodes when parsing big documents', function() {
     let state = s('"hello"\n + "blah"\n +'.repeat(1000).replace(/[+]$/, ''));
 
     const buf = (tr(state).resolve(2) as any).buffer;

@@ -19,11 +19,11 @@ type EnvWindow = {
 const singleStart = (window as EnvWindow).__env__?.SINGLE_START === '1';
 
 
-describe('basic', () => {
+describe('basic', function() {
 
   let parent: HTMLDivElement;
 
-  beforeEach(() => {
+  beforeEach(function() {
 
     parent = document.createElement('div');
     parent.setAttribute('style', 'width: 600px; border: solid 1px #CCC');
@@ -32,7 +32,7 @@ describe('basic', () => {
   });
 
 
-  (singleStart ? it.only : it)('should configure editor', () => {
+  (singleStart ? it.only : it)('should configure editor', function() {
     const doc = `for
   fruit in [ "apple", "bananas" ], vegetable in vegetables
 return
@@ -109,7 +109,7 @@ return
   });
 
 
-  it('should configure parser dialect', () => {
+  it('should configure parser dialect', function() {
 
     // given
     const doc = 'a.`b + c`';
