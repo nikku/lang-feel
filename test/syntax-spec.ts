@@ -3,6 +3,9 @@ import { feelLanguage } from 'lang-feel';
 import { ensureSyntaxTree } from '@codemirror/language';
 import { Tree } from '@lezer/common';
 
+import { expect } from 'chai';
+
+
 function s(doc: string) {
   return EditorState.create({ doc, extensions: [ feelLanguage.extension ] });
 }
