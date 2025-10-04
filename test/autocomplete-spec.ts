@@ -1,5 +1,5 @@
 import { EditorSelection, EditorState } from '@codemirror/state';
-import { feel } from '..';
+import { feel } from 'lang-feel';
 import { CompletionSource, autocompletion, currentCompletions, startCompletion } from '@codemirror/autocomplete';
 import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';

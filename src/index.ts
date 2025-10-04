@@ -4,10 +4,10 @@ export {
   expressionLanguage,
   unaryTestsLanguage,
   FeelConfig
-} from './feel';
+} from './feel.js';
 
 export {
   snippets
-} from './snippets';
+} from './snippets.js';
 
-export * from './completion';
+export * from './completion.js';

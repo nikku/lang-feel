@@ -49,10 +49,7 @@ module.exports = function(karma) {
         extensions: [
           '.ts',
           '.js'
-        ],
-        alias: {
-          'lang-feel': '.'
-        }
+        ]
       }
     }
   };

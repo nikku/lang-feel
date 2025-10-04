@@ -15,12 +15,12 @@ import {
 
 import {
   snippets
-} from './snippets';
+} from './snippets.js';
 
 import {
   keywordCompletions,
   snippetCompletion
-} from './completion';
+} from './completion.js';
 
 import {
   CompletionSource
