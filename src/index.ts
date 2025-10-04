@@ -2,7 +2,8 @@ export {
   feel,
   feelLanguage,
   expressionLanguage,
-  unaryTestsLanguage
+  unaryTestsLanguage,
+  FeelConfig
 } from './feel';
 
 export {

@@ -5,9 +5,9 @@ import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';
 
 
-describe('feel completion', () => {
+describe('feel completion', function() {
 
-  describe('built-in', () => {
+  describe('built-in', function() {
 
     it('completes patterns', check({
       doc: '',
@@ -156,7 +156,7 @@ describe('feel completion', () => {
   });
 
 
-  describe('customization', () => {
+  describe('customization', function() {
 
     it('completes custom', check({
       doc: '',
