@@ -1,5 +1,5 @@
 import { Compartment, EditorState, Facet } from '@codemirror/state';
-import { feel } from '..';
+import { feel } from 'lang-feel';
 import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';
 import { syntaxTree } from '@codemirror/language';

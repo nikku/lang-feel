@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "node20",
+    "moduleResolution": "node16",
     "strict": true
   },
   "include": [

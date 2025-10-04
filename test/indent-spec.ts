@@ -1,6 +1,6 @@
 import { EditorState } from '@codemirror/state';
 import { getIndentation } from '@codemirror/language';
-import { feel, FeelConfig } from '..';
+import { feel, FeelConfig } from 'lang-feel';
 
 function check(code: string, options: FeelConfig = {}) {
   return () => {

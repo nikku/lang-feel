@@ -1,5 +1,5 @@
 import { EditorState } from '@codemirror/state';
-import { feelLanguage } from '..';
+import { feelLanguage } from 'lang-feel';
 import { ensureSyntaxTree } from '@codemirror/language';
 import { Tree } from '@lezer/common';
 
