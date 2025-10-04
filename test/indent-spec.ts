@@ -2,6 +2,9 @@ import { EditorState } from '@codemirror/state';
 import { getIndentation } from '@codemirror/language';
 import { feel, FeelConfig } from 'lang-feel';
 
+import { expect } from 'chai';
+
+
 function check(code: string, options: FeelConfig = {}) {
   return () => {
     code = /^\n*([^]*)/.exec(code)![1];

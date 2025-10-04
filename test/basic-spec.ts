@@ -6,6 +6,8 @@ import { syntaxTree } from '@codemirror/language';
 
 import { domify } from 'min-dom';
 
+import { expect } from 'chai';
+
 type Dialect = 'expression' | 'unaryTests';
 
 type ParserDialect = undefined | 'camunda';

@@ -4,6 +4,8 @@ import { CompletionSource, autocompletion, currentCompletions, startCompletion }
 import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';
 
+import { expect } from 'chai';
+
 
 describe('feel completion', function() {
 
