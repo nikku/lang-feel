@@ -44,7 +44,7 @@
     "@types/mocha": "^10.0.10",
     "chai": "^6.0.0",
     "codemirror": "^6.0.2",
-    "eslint": "^9.0.0",
+    "eslint": "^9.39.1",
     "eslint-plugin-bpmn-io": "^2.0.0",
     "karma": "^6.4.4",
     "karma-chrome-launcher": "^3.2.0",
@@ -59,7 +59,7 @@
     "puppeteer": "^24.0.0",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.45.0",
+    "typescript-eslint": "^8.48.0",
     "webpack": "^5.102.0"
   },
   "repository": {
