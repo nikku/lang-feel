@@ -6,6 +6,13 @@ All notable changes to [lang-feel](https://github.com/nikku/lang-feel) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+
+* `FEAT`: turn into pure ES module
+
+### Breaking Changes
+
+* Drop CJS distribution. To require from CJS use `Node >= 20.12.0`
+
 ## 2.4.0
 
 * `DEPS`: update to `@codemirror/autocomplete@6.19.0`
