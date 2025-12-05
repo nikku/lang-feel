@@ -2,11 +2,12 @@ export {
   feel,
   feelLanguage,
   expressionLanguage,
-  unaryTestsLanguage
-} from './feel';
+  unaryTestsLanguage,
+  FeelConfig
+} from './feel.js';
 
 export {
   snippets
-} from './snippets';
+} from './snippets.js';
 
-export * from './completion';
+export * from './completion.js';

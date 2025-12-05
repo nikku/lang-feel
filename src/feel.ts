@@ -15,12 +15,12 @@ import {
 
 import {
   snippets
-} from './snippets';
+} from './snippets.js';
 
 import {
   keywordCompletions,
   snippetCompletion
-} from './completion';
+} from './completion.js';
 
 import {
   CompletionSource
@@ -81,6 +81,13 @@ export const feelLanguage = LRLanguage.define({
   }
 });
 
+export type FeelConfig = {
+  dialect?: 'expression' | 'unaryTests',
+  parserDialect?: string,
+  completions?: CompletionSource[],
+  context?: Record<string, unknown>
+};
+
 /**
  * A language provider for FEEL Unary Tests
  */
@@ -102,12 +109,7 @@ export const expressionLanguage = feelLanguage.configure({
  *
  * Includes [snippet](#lang-feel.snippets)
  */
-export function feel(config: {
-  dialect?: 'expression' | 'unaryTests',
-  parserDialect?: string,
-  completions?: CompletionSource[],
-  context?: Record<string, any>
-} = {}) {
+export function feel(config: FeelConfig = {}) {
   const language = config.dialect === 'unaryTests' ? unaryTestsLanguage : expressionLanguage;
 
   const dialect = config.parserDialect;

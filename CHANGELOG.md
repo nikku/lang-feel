@@ -8,6 +8,16 @@ Note: Versions prior to `2.4.0` were released in [nikku/lang-feel](https://githu
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: turn into pure ES module ([nikku/lang-feel#26](https://github.com/nikku/lang-feel/pull/26))
+* `DEPS`: update to `@bpmn-io/lezer-feel@2.0.0`
+* `DEPS`: update to `@lezer/common@1.4.0`
+* `DEPS`: update to `@codemirror/autocomplete@6.20.0`
+* `DEPS`: update to `@codemirror/language@6.11.3`
+
+### Breaking Changes
+
+* Drop CJS distribution. To require from CJS use `Node >= 20.12.0`
+
 ## 2.4.0
 
 _Initial release of the fork as `@bpmn-io/lang-feel`_

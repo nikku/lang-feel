@@ -1,8 +1,11 @@
 import { EditorState } from '@codemirror/state';
 import { getIndentation } from '@codemirror/language';
-import { feel } from '..';
+import { feel, FeelConfig } from '@bpmn-io/lang-feel';
 
-function check(code: string, options: any = {}) {
+import { expect } from 'chai';
+
+
+function check(code: string, options: FeelConfig = {}) {
   return () => {
     code = /^\n*([^]*)/.exec(code)![1];
     const state = EditorState.create({ doc: code, extensions: [ feel(options).language ] });
@@ -16,7 +19,7 @@ function check(code: string, options: any = {}) {
 }
 
 
-describe('indent', () => {
+describe('indent', function() {
 
   it('indents context', check(`
 {

@@ -1,10 +1,12 @@
 import { Compartment, EditorState, Facet } from '@codemirror/state';
-import { feel } from '..';
+import { feel } from '@bpmn-io/lang-feel';
 import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';
 import { syntaxTree } from '@codemirror/language';
 
 import { domify } from 'min-dom';
+
+import { expect } from 'chai';
 
 type Dialect = 'expression' | 'unaryTests';
 
@@ -19,11 +21,11 @@ type EnvWindow = {
 const singleStart = (window as EnvWindow).__env__?.SINGLE_START === '1';
 
 
-describe('basic', () => {
+describe('basic', function() {
 
   let parent: HTMLDivElement;
 
-  beforeEach(() => {
+  beforeEach(function() {
 
     parent = document.createElement('div');
     parent.setAttribute('style', 'width: 600px; border: solid 1px #CCC');
@@ -32,7 +34,7 @@ describe('basic', () => {
   });
 
 
-  (singleStart ? it.only : it)('should configure editor', () => {
+  (singleStart ? it.only : it)('should configure editor', function() {
     const doc = `for
   fruit in [ "apple", "bananas" ], vegetable in vegetables
 return
@@ -109,7 +111,7 @@ return
   });
 
 
-  it('should configure parser dialect', () => {
+  it('should configure parser dialect', function() {
 
     // given
     const doc = 'a.`b + c`';

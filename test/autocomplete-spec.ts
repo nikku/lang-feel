@@ -1,13 +1,15 @@
 import { EditorSelection, EditorState } from '@codemirror/state';
-import { feel } from '..';
+import { feel } from '@bpmn-io/lang-feel';
 import { CompletionSource, autocompletion, currentCompletions, startCompletion } from '@codemirror/autocomplete';
 import { EditorView } from '@codemirror/view';
 import { basicSetup } from 'codemirror';
 
+import { expect } from 'chai';
 
-describe('feel completion', () => {
 
-  describe('built-in', () => {
+describe('feel completion', function() {
+
+  describe('built-in', function() {
 
     it('completes patterns', check({
       doc: '',
@@ -156,7 +158,7 @@ describe('feel completion', () => {
   });
 
 
-  describe('customization', () => {
+  describe('customization', function() {
 
     it('completes custom', check({
       doc: '',

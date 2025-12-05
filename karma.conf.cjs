@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 // configures browsers to run test against
 // any of [ 'ChromeHeadless', 'Chrome', 'Firefox' ]
 const browsers = (process.env.TEST_BROWSERS || 'ChromeHeadless').split(',');
@@ -16,7 +14,6 @@ module.exports = function(karma) {
 
     frameworks: [
       'mocha',
-      'chai',
       'webpack'
     ],
 
@@ -51,10 +48,7 @@ module.exports = function(karma) {
         extensions: [
           '.ts',
           '.js'
-        ],
-        alias: {
-          'lang-feel': '.'
-        }
+        ]
       }
     }
   };
