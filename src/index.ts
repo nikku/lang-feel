@@ -11,3 +11,7 @@ export {
 } from './snippets.js';
 
 export * from './completion.js';
+
+export {
+  feelHighlighting
+} from './highlight-style.js';
