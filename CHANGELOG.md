@@ -6,6 +6,8 @@ All notable changes to [lang-feel](https://github.com/nikku/lang-feel) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 3.0.0
+
 * `FEAT`: turn into pure ES module ([#26](https://github.com/nikku/lang-feel/pull/26))
 * `DEPS`: update to `lezer-feel@2.0.0`
 * `DEPS`: update to `@lezer/common@1.4.0`
