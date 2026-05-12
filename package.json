@@ -33,7 +33,7 @@
     "@codemirror/autocomplete": "^6.20.1",
     "@codemirror/language": "^6.12.3",
     "@lezer/common": "^1.5.2",
-    "lezer-feel": "^2.4.0"
+    "lezer-feel": "^3.0.0"
   },
   "devDependencies": {
     "@codemirror/state": "^6.6.0",
