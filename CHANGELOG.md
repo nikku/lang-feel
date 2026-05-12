@@ -6,6 +6,13 @@ All notable changes to [lang-feel](https://github.com/nikku/lang-feel) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 4.0.0
+
+* `DEPS`: update to `lezer-feel@3.0.0`
+* `DEPS`: update to `min-dom@5.3.0`
+* `DEPS`: update `@codemirror` dependencies
+* `DEPS`: update to `@lezer/common@1.5.2`
+
 ## 3.0.0
 
 * `FEAT`: turn into pure ES module ([#26](https://github.com/nikku/lang-feel/pull/26))
