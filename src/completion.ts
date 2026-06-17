@@ -105,7 +105,7 @@ export function ifExpression(completionSource: CompletionSource) : CompletionSou
 }
 
 export function snippetCompletion(snippets: readonly Completion[]) : CompletionSource {
-  return ifExpression(completeFromList(snippets.map(s => ({ ...s, type: 'text' }))));
+  return ifExpression(completeFromList(snippets));
 }
 
 export function matchLeft(node: SyntaxNode, position: number, nodes: (string|undefined)[]) : SyntaxNode | null {
