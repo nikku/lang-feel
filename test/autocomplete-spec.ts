@@ -27,7 +27,7 @@ describe('feel completion', function() {
     }));
 
 
-    it('filteres matching by full term', check({
+    it('filters matching by full term', check({
       doc: 'if',
       expectedCompletions: [
         { label: 'context', excluded: true },
@@ -40,7 +40,7 @@ describe('feel completion', function() {
     }));
 
 
-    it('filteres matching by partial term', check({
+    it('filters matching by partial term', check({
       doc: 'fun',
       expectedCompletions: [
         { label: 'context', excluded: true },
