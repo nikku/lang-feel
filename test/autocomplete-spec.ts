@@ -27,13 +27,26 @@ describe('feel completion', function() {
     }));
 
 
-    it('filteres matching', check({
+    it('filteres matching by full term', check({
       doc: 'if',
       expectedCompletions: [
         { label: 'context', excluded: true },
         { label: 'function', excluded: true },
         { label: 'for', excluded: true },
         { label: 'if' },
+        { label: 'some', excluded: true },
+        { label: 'every', excluded: true }
+      ]
+    }));
+
+
+    it('filteres matching by partial term', check({
+      doc: 'fun',
+      expectedCompletions: [
+        { label: 'context', excluded: true },
+        { label: 'function' },
+        { label: 'for', excluded: true },
+        { label: 'if', excluded: true },
         { label: 'some', excluded: true },
         { label: 'every', excluded: true }
       ]
@@ -248,7 +261,7 @@ describe('feel completion', function() {
     }));
 
 
-    it('completes only literal completions inside identifier', check({
+    it('completes literal and regular completions inside identifier', check({
       doc: 'my',
       selection: 2,
       config: {
@@ -260,7 +273,7 @@ describe('feel completion', function() {
         ]
       },
       expectedCompletions: [
-        { label: 'myRegular', excluded: true },
+        { label: 'myRegular' },
         { label: 'myLiteral' }
       ]
     }));

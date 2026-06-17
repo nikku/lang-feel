@@ -55,16 +55,12 @@ export const keywordCompletions = [
   })
 ];
 
-export const dontCompleteLiteral = [
+export const dontCompleteExpression = [
+  'Name',
   'StringLiteral',
   'LineComment', 'BlockComment',
   'PathExpression', 'Context',
   'Key', 'ParameterName'
-];
-
-export const dontCompleteExpression = [
-  'Identifier',
-  ...dontCompleteLiteral
 ];
 
 export const doCompleteExpression = [
@@ -108,62 +104,8 @@ export function ifExpression(completionSource: CompletionSource) : CompletionSou
   });
 }
 
-export function ifExpressionOrIdentifier(completionSource: CompletionSource) : CompletionSource {
-  return ifNode(completionSource, {
-    include: doCompleteExpression,
-    exclude: dontCompleteLiteral
-  });
-}
-
-export function combineCompletionSources(sources: CompletionSource[]) : CompletionSource {
-
-  return async (context) => {
-    const results = await Promise.all(
-      sources.map(source => source(context))
-    );
-
-    const matchedResults = results.filter(r => !!r);
-
-    if (!matchedResults.length) {
-      return null;
-    }
-
-    if (matchedResults.length === 1) {
-      return matchedResults[0];
-    }
-
-    return {
-      from: Math.min(...matchedResults.map(r => r.from)),
-      options: matchedResults.flatMap(r => r.options)
-    };
-  };
-}
-
 export function snippetCompletion(snippets: readonly Completion[]) : CompletionSource {
-
-  const taggedSnippets = snippets.map(s => ({ ...s, type: 'text' }));
-
-  // split literal completions from other completions
-  // literal completions may appear in place of <Identifier> nodes,
-  // other snippets may only appear in place of <Expression> nodes
-  const literalSnippets = taggedSnippets.filter(s => s.detail === 'literal');
-  const regularSnippets = taggedSnippets.filter(s => s.detail !== 'literal');
-
-  const sources: CompletionSource[] = [];
-
-  if (regularSnippets.length) {
-    sources.push(ifExpression(
-      completeFromList(regularSnippets)
-    ));
-  }
-
-  if (literalSnippets.length) {
-    sources.push(ifExpressionOrIdentifier(
-      completeFromList(literalSnippets)
-    ));
-  }
-
-  return combineCompletionSources(sources);
+  return ifExpression(completeFromList(snippets.map(s => ({ ...s, type: 'text' }))));
 }
 
 export function matchLeft(node: SyntaxNode, position: number, nodes: (string|undefined)[]) : SyntaxNode | null {
