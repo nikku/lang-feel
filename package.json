@@ -57,7 +57,7 @@
     "mocha": "^11.7.6",
     "npm-run-all2": "^9.0.2",
     "ts-loader": "^9.6.0",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.0",
     "typescript-eslint": "^8.61.1",
     "webpack": "^5.107.2"
   },
